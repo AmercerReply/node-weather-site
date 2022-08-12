@@ -8,11 +8,12 @@ const forecast = (lat, long, callback) => {
         } else if (response.body.error){
             callback('Location not found')
         } else {
-            const {temperature, feelslike, weather_descriptions} = response.body.current
+            const {temperature, feelslike, weather_descriptions, humidity} = response.body.current
             callback(undefined, {
                 temp: temperature,
                 feelslike: feelslike,
-                desc: weather_descriptions[0]
+                desc: weather_descriptions[0],
+                humidity
             })
         }
     })
